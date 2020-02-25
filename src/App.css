@@ -1,0 +1,84 @@
+.App {
+  height: 100%;
+  display: flex;
+  padding: 1em;
+  align-items: center;
+  flex-direction: column;
+  background-color: cornflowerblue;  
+}
+
+.create-note {
+  width: 600px;
+  display: flex;
+  margin: 0 auto;
+  border-radius: 6px;
+  flex-direction: column;
+  padding: .5em;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 1px 2px 3px 0 rgba(0,0,0,1);  
+}
+
+[name="title"], [name="content"]{  
+  border: none;
+  outline: none;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+[name="title"] {
+  display: none;
+  margin: 0;
+}
+
+[name="content"] {
+  resize: none;
+  overflow: hidden;
+  text-align: justify;
+  box-sizing: border-box;  
+}
+
+.form-footer {   
+  display: none;
+  padding: 8px;
+  justify-content: flex-end;
+}
+
+.form-footer button {
+  border: none;  
+  padding: 6px 20px;
+  background-color: #fff;
+}
+
+.form-footer button:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.note-list {
+  height: auto;
+  display: flex;
+  padding: 2em 1em;
+  flex-direction: column;  
+  justify-content: space-between;
+}
+
+
+.note {
+  width: 600px;
+  padding: 1em;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #f2f2f2;
+  background-color: #fff;
+} 
+
+.note-title {
+  padding: .2em 1em;
+  font-weight: 600;
+}
+
+.note-content {
+  padding: 1em;
+}

@@ -2,77 +2,88 @@ import React, { useRef, useState } from "react";
 import "./App.css";
 
 function App() {
-  const titleRef = useRef(null);
-  const contentRef = useRef(null);
-  const footerRef = useRef(null);
-
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const controlFormResize = (e, action) => {
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const footerRef = useRef(null);
 
-    console.log(e.target);    
-
-    if (action !== "close" && !e.target.classList.contains("App")) {
+  const controlFormResize = action => {
+    if (action === "open") {
       titleRef.current.style.display = "inline-block";
       footerRef.current.style.display = "flex";
     } else {
       titleRef.current.style.display = "none";
-      footerRef.current.style.display = "none";      
+      footerRef.current.style.display = "none";
     }
   };
 
-  const handSubmit = event => {
-    event.preventDefault();    
-    setNotes([...notes, {id: (notes.length+1), title, content}]);
+  document.addEventListener("click", e => {
+    if (
+      e.target.classList[0] === "App" ||
+      e.target.getAttribute("id") === "bt-close"
+    ) {
+      controlFormResize("close");
+    } else {
+      controlFormResize("open");
+    }
+  });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (title || content) {
+      setNotes([...notes,{id: (notes.length+1), title, content}])
+    }
     setTitle("");
-    setContent("");    
+    setContent("");
     contentRef.current.style.height = "auto";
   };
 
-  const handleContentInput = () => {
-    contentRef.current.style.height = "auto";
-    contentRef.current.style.height = 
-      contentRef.current.scrollHeight + "px";
+  const handleTitleChange = () => {
+    setTitle(titleRef.current.value)
   }
 
-  const chooseAction = e => {
-    return e.target.attributes[0].value === "btClose" ? "close" : "";
-  };
+  const handleContentChange = () => {
+    setContent(contentRef.current.value);
+  }
 
   return (
-    <div className="App" onClick={e => controlFormResize(e, chooseAction(e))}>
-      <form className="create-note" onSubmit={handSubmit}>
+    <div className="App">
+      <form className="form-note" onSubmit={handleSubmit}>
         <input
+          typ="text"
           name="title"
-          type="text"          
+          className="field"
           placeholder="Title"
           ref={titleRef}
           value={title}
-          onChange={() => setTitle(titleRef.current.value)}
+          onChange={handleTitleChange}
         />
         <textarea
           name="content"
+          className="field"
           rows="1"
           placeholder="Enter a note"
-          value={content}
           ref={contentRef}
-          onInput={handleContentInput}          
-          onChange={() => setContent(contentRef.current.value)}
-        />
+          value={content}
+          onChange={handleContentChange}
+          onInput={ () => {
+            contentRef.current.style.height = "auto";
+            contentRef.current.style.height = contentRef.current.scrollHeight + "px";
+          }}
+        ></textarea>
         <div className="form-footer" ref={footerRef}>
-          <button id="btClose">close</button>
+          <button id="bt-close">close</button>
         </div>
       </form>
-      <div className="note-list">
+      <div className="notes">
         {notes.map(note => {
-          return (
-            <div className="note" key={note.id}>
-              <div className="note-title">{note.title}</div>
-              <div className="note-content">{note.content}</div>
-            </div>
-          )
+          return (<div className="note" key={note.id}> 
+            <div className="note-title">{note.title}</div>
+            <div className="note-title">{note.content}</div>
+          </div>)
         })}
       </div>
     </div>

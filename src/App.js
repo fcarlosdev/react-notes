@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
-import AddNote from "./components/AddNote";
-import NoteList from "./components/NoteList";
+import AddNote from "./components/add_note/AddNote";
+import NoteList from "./components/note_list/NoteList";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -20,11 +21,8 @@ function App() {
     }
   };
 
-  document.addEventListener("click", e => {
-    
-    let action = (e.target.classList[0] === "App" || 
-                  e.target.getAttribute("id") === "bt-close") ? "close" : "open";
-
+  document.addEventListener("click", e => {    
+    let action = (e.target.parentElement.classList[0] === "form-note") ? "open" : "close";
     controlFormResize(action);
   });
 
@@ -39,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <AddNote
         submit={handleSubmit}
         refs={{

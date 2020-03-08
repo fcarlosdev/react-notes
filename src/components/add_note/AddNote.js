@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./addnote.css";
+
 export default function AddNote({submit,refs:{titleRef, contentRef, footerRef}}) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

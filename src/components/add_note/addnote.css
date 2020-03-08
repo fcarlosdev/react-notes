@@ -1,0 +1,49 @@
+.form-note {
+    width: 600px;
+    display: flex;  
+    margin: 0 auto;  
+    flex-direction: column;
+    border: 1px solid #f2f2f2;
+    border-radius: 6px;
+    box-shadow: 1px 2px 3px 0 rgba(0,0,0,.5);  
+    box-sizing: border-box;
+  }
+  
+  [name="title"], [name="content"] {
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+  }
+  
+  [name="title"] {
+    padding: 1em;
+    border-radius: 6px 6px 0 0;
+    display: none;
+  }
+  
+  [name="content"] {
+    resize: none;
+    padding: 1em 1.5em;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+  }
+  
+  .form-footer {
+    display: none;
+    padding: .5em 1em;  
+    justify-content: flex-end;
+    background-color: #fff;  
+  }
+  
+  #bt-close {
+    padding: .5em 1em;
+    border: none;
+    font-size: 1em;
+    background-color: #fff;
+  }
+  
+  #bt-close:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+  }
+  

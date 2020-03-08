@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./notelist.css";
+
 export default function NoteList({notes}) {
   return (
     <div className="notes">

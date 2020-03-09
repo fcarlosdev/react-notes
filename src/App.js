@@ -5,35 +5,32 @@ import NoteList from "./components/note_list/NoteList";
 import NavBar from "./components/navbar/NavBar";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([{id: 1, title:"Note One", content:"Model note"}]);
 
   const titleRef = useRef(null);
   const contentRef = useRef(null);
   const footerRef = useRef(null);
 
   const controlFormResize = action => {
-    if (action === "open") {
-      titleRef.current.style.display = "inline-block";
-      footerRef.current.style.display = "flex";
-    } else {
-      titleRef.current.style.display = "none";
-      footerRef.current.style.display = "none";
-    }
+    [titleRef.current.style.display, footerRef.current.style.display] =
+      action === "open" ? ["inline-block", "flex"] : ["none", "none"];
   };
 
-  document.addEventListener("click", e => {    
-    let action = (e.target.parentElement.classList[0] === "form-note") ? "open" : "close";
-    controlFormResize(action);
+  document.addEventListener("click", e => {
+    controlFormResize(e.target.parentElement.classList[0] === "form-note" ? "open" : "close");
   });
 
   const handleSubmit = note => {
     if (note.title || note.content) {
-      note.id = (notes.length + 1);
+      note.id = notes.length + 1;
       setNotes([...notes, note]);
     }
     contentRef.current.style.height = "auto";
   };
 
+  // const handlEditNote = () => {
+
+  // }
 
   return (
     <div className="App">
@@ -46,7 +43,7 @@ function App() {
           footerRef: footerRef
         }}
       />
-      <NoteList notes={notes}/>
+      <NoteList notes={notes} />
     </div>
   );
 }

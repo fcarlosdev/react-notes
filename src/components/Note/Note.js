@@ -1,22 +1,62 @@
-import React from "react";
+import React, {useState, useRef} from "react";
 
-import { FaEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 
 import "./note.css";
 
-const Note = ({note}) => {      
+const Note = ({ note }) => {
+
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+
+  const [title, setTitle] = useState(note.title);
+  const [content, setContent] = useState(note.content);
+
+  let edit = false;
+
+  const handleChangeTitle = () => {
+    setTitle(titleRef.current.value);
+  };
+
+  const handleChangeContent = () => {
+    setContent(contentRef.current.value);
+  }
+
+  const exibForm = () => {
+    return (<form>
+        <input
+          type="text"          
+          className="note-title"
+          value={title}
+          ref={titleRef}          
+          onChange={handleChangeTitle}
+        />
+        <textarea   
+          className="note-content"
+          ref={contentRef}
+          value={content}          
+          onChange={handleChangeContent}          
+        />
+    </form>)
+  }
+
+  const exibDivs = () => {
+    return (
+      <>
+      <div className="note-title">{title}</div>
+      <div className="note-content">{content}</div>
+      </>
+    )
+  }
 
   return (
     <div className="note">
-      <div className="note-title">{note.title}</div>
-      <div className="note-title">{note.content}</div>
-      <div className="note-footer">
-          <FaEdit />
-          <AiOutlineDelete />
+      {edit === true ? exibForm() : exibDivs()}
+      <div className="note-footer">        
+        <AiOutlineDelete />
       </div>
     </div>
   );
-}
+};
 
 export default Note;

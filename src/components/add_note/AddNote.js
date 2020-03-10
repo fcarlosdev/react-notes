@@ -26,7 +26,7 @@ export default function AddNote({submit,refs:{titleRef, contentRef, footerRef}})
     <div>
       <form className="form-note" onSubmit={handleSubmit}>
         <input
-          typ="text"
+          type="text"
           name="title"
           className="field"
           placeholder="Title"

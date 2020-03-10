@@ -5,9 +5,25 @@
     border-radius: 6px;
     box-shadow: 1px 2px 1px rgba(0, 0, 0,.2);
   }
-  
+
+  .note form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .note-title, .note-content {
+    border: none;    
+  }
+
   .note-title {
     padding: 1em;
+    font-size: 1em;
+  }
+
+  .note-content {
+    resize: none;
+    padding: 1em;
+    font-size: 1.2em;    
   }
 
   .note-footer {

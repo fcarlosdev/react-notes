@@ -12,7 +12,7 @@ const Note = ({ note }) => {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
 
-  let edit = false;
+  let edit = false; //Put it on the shared context
 
   const handleChangeTitle = () => {
     setTitle(titleRef.current.value);

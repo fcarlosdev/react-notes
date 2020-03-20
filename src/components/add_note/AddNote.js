@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./addnote.css";
+import { NotesContext } from "../../store/NotesContext";
 
-export default function AddNote({submit,refs:{titleRef, contentRef, footerRef}}) {
+export default function AddNote({ refs: { titleRef, contentRef, footerRef } }) {
+  const [, addNote] = useContext(NotesContext);
+  console.log(addNote);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -15,12 +19,13 @@ export default function AddNote({submit,refs:{titleRef, contentRef, footerRef}})
   };
 
   const handleSubmit = e => {
-      e.preventDefault();
-      let note = {id: 0, title, content}
-      submit(note);
-      setTitle("");
-      setContent("");
-  }
+    e.preventDefault();
+    let note = { id: 0, title, content };
+    addNote(note);
+    setTitle("");
+    setContent("");
+    contentRef.current.style.height = "auto";
+  };
 
   return (
     <div>

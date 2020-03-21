@@ -1,11 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 
 import "./addnote.css";
 import { NotesContext } from "../../store/NotesContext";
 
-export default function AddNote({ refs: { titleRef, contentRef, footerRef } }) {
+export default function AddNote() {
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const footerRef = useRef(null);
+
   const [, addNote] = useContext(NotesContext);
-  console.log(addNote);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -26,6 +29,20 @@ export default function AddNote({ refs: { titleRef, contentRef, footerRef } }) {
     setContent("");
     contentRef.current.style.height = "auto";
   };
+
+  const controlFormResize = action => {
+    [titleRef.current.style.display, footerRef.current.style.display] =
+      action === "open" ? ["inline-block", "flex"] : ["none", "none"];
+  };
+
+  document.addEventListener("click", e => {
+    controlFormResize(
+      e.target.parentElement &&
+        e.target.parentElement.classList[0] === "form-note"
+        ? "open"
+        : "close"
+    );
+  });
 
   return (
     <div>

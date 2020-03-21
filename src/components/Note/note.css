@@ -16,14 +16,19 @@
   }
 
   .note-title {
-    padding: 1em;
-    font-size: 1em;
+    padding: .8em 1em;
+    font-size: 1.2em;
   }
 
   .note-content {
     resize: none;
     padding: 1em;
     font-size: 1.2em;    
+  }
+
+  .note-font {
+    padding: .6em 1em;
+    font-size: 1.4em;
   }
 
   .note-footer {

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import { AiOutlineDelete } from "react-icons/ai";
+import FormField from "../form_field/FormField";
 
 import "./note.css";
-import FormField from "../form_field/FormField";
 
 const Note = ({ note }) => {
   const [title, setTitle] = useState(note.title);

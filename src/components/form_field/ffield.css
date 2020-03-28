@@ -1,15 +1,14 @@
 .form-field {
-  padding: 0.6em 1em;
-  font-size: 1.2em;
+  padding: .8em 1em;
+  font-size: 1em;
+  outline: none;
 }
 
 .multlines-height {
-  min-height: 70px;
+  min-height: 80px;
   resize: none;
-  padding: .4em 1em;    
-  font-size: 1.2em;
-  overflow: hidden;  
-
+  padding: 1em;      
+  overflow: hidden;    
 }
 
 div:empty::before {

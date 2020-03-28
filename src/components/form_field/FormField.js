@@ -6,8 +6,15 @@ const FormField = props => {
 
   const fieldRef = useRef(null);
 
-  const applyClassName = () =>
-    props.multline ? " form-field multlines-height" : "form-field";
+  const applyClassName = () =>{
+    let className = "form-field ";
+    if (props.multline) {
+      className += "multlines-height";
+    }
+    if (props.className !== undefined)
+      className += " " + props.className;
+    return className;
+  }
 
   const changeEditable = status => {
     fieldRef.current.contentEditable = status;
@@ -18,12 +25,14 @@ const FormField = props => {
 
   return (
     <div
+      id={props.id || null}
       className={applyClassName()}
-      placeholder={props.placeholder}
+      placeholder={props.placeholder || "Enter a value"}
       onClick={() => changeEditable(true)}
       onBlur={() => {
         changeEditable(false);
-        props.handleChange(fieldRef.current.innerHTML);
+        if (props.handleChange !== undefined)
+          props.handleChange(fieldRef.current.innerHTML);
       }}
       ref={fieldRef}
       dangerouslySetInnerHTML={{ __html: props.html  }}

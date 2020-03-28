@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from "react";
 
 import "./addnote.css";
 import { NotesContext } from "../../store/NotesContext";
+import { autoResizeTextArea } from "../../shared/lib";
 
 export default function AddNote() {
   const titleRef = useRef(null);
@@ -64,11 +65,7 @@ export default function AddNote() {
           ref={contentRef}
           value={content}
           onChange={handleContentChange}
-          onInput={() => {
-            contentRef.current.style.height = "auto";
-            contentRef.current.style.height =
-              contentRef.current.scrollHeight + "px";
-          }}
+          onInput={() => autoResizeTextArea(contentRef.current)}
         ></textarea>
         <div className="form-footer" ref={footerRef}>
           <button id="bt-close">close</button>

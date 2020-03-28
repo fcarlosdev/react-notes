@@ -1,0 +1,23 @@
+.form-field {
+  padding: 0.6em 1em;
+  font-size: 1.2em;
+}
+
+.multlines-height {
+  min-height: 70px;
+  resize: none;
+  padding: .4em 1em;    
+  font-size: 1.2em;
+  overflow: hidden;  
+
+}
+
+div:empty::before {
+  color: grey;
+}
+div[placeholder]:not([placeholder=""]):empty::before {
+  content: attr(placeholder);
+}
+div:empty::before {
+  content: "fallback placeholder";
+}

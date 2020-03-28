@@ -21,9 +21,11 @@
   }
 
   .note-content {
+    min-height: 50px;
     resize: none;
-    padding: 1em;
-    font-size: 1.2em;    
+    padding: .4em 1em;    
+    font-size: 1.2em;
+    overflow: hidden;  
   }
 
   .note-font {

@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import "./ffield.css";
 
 const FormField = props => {
-  console.log(props);
 
   const fieldRef = useRef(null);
 
@@ -27,6 +26,7 @@ const FormField = props => {
         props.handleChange(fieldRef.current.innerHTML);
       }}
       ref={fieldRef}
+      dangerouslySetInnerHTML={{ __html: props.html  }}
     />
   );
 };

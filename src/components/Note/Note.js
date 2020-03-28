@@ -9,15 +9,6 @@ const Note = ({ note }) => {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
 
-  const handleChangeTitle = value => {    
-    setTitle(value);
-  };
-
-  const handleChangeContent = value => {
-    setContent(value);
-  };
-  
-
   return (
     <div className="note">
       <>
@@ -25,13 +16,13 @@ const Note = ({ note }) => {
           className="note-title"
           placeholder="Ente a title"
           html={title}
-          handleChange={handleChangeTitle}
+          handleChange={setTitle}
         />
         <FormField
           placeholder="Enter a note"
           multline
           html={content}
-          handleChange={handleChangeContent}
+          handleChange={setContent}
         />
       </>
       <div className="note-footer">

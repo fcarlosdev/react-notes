@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 
 import { AiOutlineDelete } from "react-icons/ai";
+import { IoIosLink } from "react-icons/io";
+import Tippy from "@tippyjs/react";
+
 import FormField from "../form_field/FormField";
+import CustomForwardRef from "../forward_comp/CustomForwardRef";
 
 import "./note.css";
+import "tippy.js/dist/tippy.css";
 
 const Note = ({ note }) => {
   const [title, setTitle] = useState(note.title);
@@ -26,7 +31,12 @@ const Note = ({ note }) => {
         />
       </>
       <div className="note-footer">
-        <AiOutlineDelete />
+        <Tippy content="Delete">
+          <CustomForwardRef comp={<AiOutlineDelete />} />
+        </Tippy>
+        <Tippy content="Add link to selection">
+          <CustomForwardRef comp={<IoIosLink />} />
+        </Tippy>
       </div>
     </div>
   );

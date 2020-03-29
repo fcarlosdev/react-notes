@@ -17,6 +17,3 @@ div:empty::before {
 div[placeholder]:not([placeholder=""]):empty::before {
   content: attr(placeholder);
 }
-div:empty::before {
-  content: "fallback placeholder";
-}

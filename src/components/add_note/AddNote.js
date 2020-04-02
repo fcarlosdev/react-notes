@@ -23,9 +23,10 @@ const AddNote = () => {
   };
 
   const controlFormResize = action => {
-    [document.getElementById("fcontent").style.display, 
+    [document.getElementById("ftitle").style.display, 
+     document.getElementById("fcontent").style.display, 
         footerRef.current.style.display] =
-      action === "open" ? ["inline-block", "flex"] : ["none", "none"];
+      action === "open" ? ["inline-block", "multline", "flex"] : ["none", "", "none"];
   };
 
   document.addEventListener("click", e => {
@@ -42,14 +43,15 @@ const AddNote = () => {
       <FormField
         html={title}
         handleChange={setTitle}
-        placeholder="Title"        
+        placeholder="Title"
+        id="ftitle"
       />
       <FormField
         html={content}
-        multline
+        // multline
         handleChange={setContent}
         placeholder="Enter a note"
-        id="fcontent"
+        id="fcontent" 
       />
       <div className="form-footer2" ref={footerRef}>
         <button id="bt-close">close</button>

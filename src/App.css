@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;  
 }
 
 html, body, #root, .App {
@@ -21,8 +21,40 @@ code {
     monospace;
 }
 
-.App {
+.App {  
   display: flex;  
-  flex-direction: column;
-  background-color: #F8F9F9;  
+  flex-direction: column; 
+  background-color: #F8F9F9;    
+}
+
+.container {
+  display: flex;
+  height: inherit;
+  padding-bottom: .5em;
+  overflow-y: auto;
+}
+
+.main {  
+  display: flex;
+  padding: 2em 0;
+  margin-top: 78px;
+  margin-left: 200px;  
+  align-items: center;  
+  flex-direction: column;  
+  width: calc(100% - 152px);
+}
+
+/*
+* Side Bar
+*/
+.side-bar {  
+  height: 100vh;
+  width: 200px;
+  display: flex;
+  position: fixed;
+  background-color: lightblue;  
+  box-sizing: border-box;
+  margin-top: 76px;
+  left: 0;
+  right: 0;
 }

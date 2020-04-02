@@ -10,8 +10,13 @@ function App() {
     <div className="App">
       <NotesProvider>
         <NavBar />
-        <AddNote />
-        <NoteList />
+        <div className="container">
+          <div className="side-bar">Side Bar</div>
+          <div className="main">
+            <AddNote />
+            <NoteList />
+          </div>
+        </div>
       </NotesProvider>
     </div>
   );

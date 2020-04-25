@@ -14,9 +14,12 @@ const NotesProvider = props => {
     }    
   };
 
+  const removeNote = id => {
+    setNotes(notes.filter(note => note.id !== id))
+  }
 
   return (
-    <NotesContext.Provider value={[notes, addNote]}>
+    <NotesContext.Provider value={[notes, addNote, removeNote]}>
       {props.children}
     </NotesContext.Provider>
   );

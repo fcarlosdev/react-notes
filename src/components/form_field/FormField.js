@@ -21,18 +21,17 @@ const FormField = props => {
     if (status === true) {
       fieldRef.current.focus();
     }
-  };
+  };  
 
   const saveContent = () => {
-    let value = fieldRef.current.innerHTML;
-    if (value.includes("<a") ) {      
-      let start     = value.indexOf("<a");
-      let finish    = value.indexOf("\">");
-      let link      = value.substring(start,finish+2);
-      let finalLink = value.substring(start,start+3) + 'target="_blank" ' + value.substring(start+3,finish+2);
-      value         = value.replace(link,finalLink)
-    } 
-    return value;
+
+    let content = fieldRef.current.innerText;
+    let pattern1 = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
+    let str1 = content.replace(pattern1, "<a href='$1' target='_blank' >$1</a>");
+
+    let pattern2 =/(^|[^/])(www\.[\S]+(\b|$))/gim;
+    return str1.replace(pattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+    
   }
 
   return (

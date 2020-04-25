@@ -48,7 +48,6 @@ const AddNote = () => {
       />
       <FormField
         html={content}
-        // multline
         handleChange={setContent}
         placeholder="Enter a note"
         id="fcontent" 

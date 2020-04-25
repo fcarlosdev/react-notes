@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { AiOutlineDelete } from "react-icons/ai";
 import { IoIosLink } from "react-icons/io";
@@ -7,12 +7,15 @@ import Tippy from "@tippyjs/react";
 import FormField from "../form_field/FormField";
 import CustomForwardRef from "../forward_comp/CustomForwardRef";
 
+import { NotesContext } from "../../store/NotesContext";
+
 import "./note.css";
 import "tippy.js/dist/tippy.css";
 
 const Note = ({ note }) => {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
+  const [, , removeNote] = useContext(NotesContext);
 
   return (
     <div className="note">
@@ -32,7 +35,10 @@ const Note = ({ note }) => {
       </>
       <div className="note-footer">
         <Tippy content="Delete">
-          <CustomForwardRef comp={<AiOutlineDelete />} />
+          <CustomForwardRef
+            comp={<AiOutlineDelete />}
+            handleClick={() => removeNote(note.id)}
+          />
         </Tippy>
         <Tippy content="Add link to selection">
           <CustomForwardRef comp={<IoIosLink />} />

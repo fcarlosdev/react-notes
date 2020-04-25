@@ -2,6 +2,7 @@
   padding: .8em 1em;
   font-size: 1em;
   outline: none;
+  white-space: pre;  
 }
 
 .multlines-height {
